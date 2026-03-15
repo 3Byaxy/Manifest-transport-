@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifest Transport Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Manifest Fellowship</h1>
+      <p>Transport Registration</p>
+      <span>Stage: Infront of Girls Hostel — MKA/KIU01R</span>
+    </div>
+
+    <div id="successMsg" class="msg success hidden">
+      ✅ Registration saved successfully!
+    </div>
+
+    <div id="duplicateMsg" class="msg duplicate hidden">
+      ⚠️ This phone number is already registered.
+    </div>
+
+    <div id="errorMsg" class="msg error hidden">
+      ❌ Something went wrong. Please try again.
+    </div>
+
+    <div class="form-group">
+      <label>Event Name</label>
+      <input type="text" id="event" placeholder="e.g. Sunday Service - March 16" required>
+    </div>
+
+    <div class="form-group">
+      <label>Trip ID</label>
+      <input type="text" id="tripId" placeholder="e.g. TRIP-001" required>
+    </div>
+
+    <div class="divider">Passenger Details</div>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Enter full name" required>
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="e.g. 0771234567" required>
+    </div>
+
+    <div class="form-group">
+      <label>Place of Residence</label>
+      <input type="text" id="residence" placeholder="e.g. Kawanda" required>
+    </div>
+
+    <div class="form-group">
+      <label>First Time?</label>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="firstTime" value="Yes"> Yes
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="firstTime" value="No" checked> No
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Course</label>
+      <input type="text" id="course" placeholder="e.g. Computer Science" required>
+    </div>
+
+    <div class="form-group">
+      <label>Year of Study</label>
+      <select id="year">
+        <option value="">Select year</option>
+        <option value="Year 1">Year 1</option>
+        <option value="Year 2">Year 2</option>
+        <option value="Year 3">Year 3</option>
+        <option value="Year 4">Year 4</option>
+        <option value="Year 5">Year 5</option>
+        <option value="Postgraduate">Postgraduate</option>
+      </select>
+    </div>
+
+    <button id="submitBtn" onclick="submitForm()">
+      Register Passenger
+    </button>
+
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>
