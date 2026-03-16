@@ -1,4 +1,5 @@
-const SCRIPT_URL = CONFIG.scriptUrl
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUT3qtUWoeQZWfZMgZ90qcfLVsIqoXoRrU3bZoYQvAYaSIJTYdxJSqNNRr1QG3Gta57A/exec"
+
 function submitForm() {
   const btn = document.getElementById("submitBtn")
   const name = document.getElementById("name").value.trim()
@@ -10,47 +11,58 @@ function submitForm() {
   const event = document.getElementById("event").value.trim()
   const tripId = document.getElementById("tripId").value.trim()
 
-  // Hide all messages
   hideMessages()
 
-  // Basic validation
   if (!name || !phone || !residence || !course || !year || !event || !tripId) {
-    showMsg("errorMsg", "Please fill in all fields before submitting.")
+    showMsg("errorMsg", "❌ Please fill in all fields.")
     return
   }
 
-  // Disable button while submitting
   btn.disabled = true
-  btn.textContent = "Saving..."
+  btn.textContent = "Checking..."
 
-  const payload = {
-    name, phone, residence, firstTime,
-    course, year, event, tripId
-  }
+  const payload = { name, phone, residence, firstTime, course, year, event, tripId }
 
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    body: JSON.stringify(payload)
-  })
-  .then(res => res.json())
-  .then(data => {
-    btn.disabled = false
-    btn.textContent = "Register Passenger"
+  fetch(SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      const existing = data.data || []
+      const isDuplicate = existing.some(r =>
+        String(r["Phone"]).replace(/^0+/, '') === String(phone).replace(/^0+/, '')
+      )
 
-    if (data.status === "success") {
-      showMsg("successMsg", "✅ Registration saved!")
-      clearForm()
-    } else if (data.status === "duplicate") {
-      showMsg("duplicateMsg", "⚠️ This phone number is already registered.")
-    } else {
-      showMsg("errorMsg", "❌ Something went wrong. Try again.")
-    }
-  })
-  .catch(err => {
-    btn.disabled = false
-    btn.textContent = "Register Passenger"
-    showMsg("errorMsg", "❌ Network error. Check your connection.")
-  })
+      if (isDuplicate) {
+        btn.disabled = false
+        btn.textContent = "Register Passenger"
+        showMsg("duplicateMsg", "⚠️ This phone number is already registered.")
+        return
+      }
+
+      btn.textContent = "Saving..."
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        btn.disabled = false
+        btn.textContent = "Register Passenger"
+        showMsg("successMsg", "✅ Registration saved!")
+        clearForm()
+      })
+      .catch(() => {
+        btn.disabled = false
+        btn.textContent = "Register Passenger"
+        showMsg("errorMsg", "❌ Network error. Check connection.")
+      })
+    })
+    .catch(() => {
+      btn.disabled = false
+      btn.textContent = "Register Passenger"
+      showMsg("errorMsg", "❌ Could not connect. Check internet.")
+    })
 }
 
 function showMsg(id, text) {
