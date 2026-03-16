@@ -1,5 +1,7 @@
-const ADMIN_PASSWORD = CONFIG.adminPassword
-const SCRIPT_URL = CONFIG.scriptUrl
+// const ADMIN_PASSWORD = CONFIG.adminPassword
+// const SCRIPT_URL = CONFIG.scriptUrl
+const ADMIN_PASSWORD = "MKA@KIU2026!"
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUT3qtUWoeQZWfZMgZ90qcfLVsIqoXoRrU3bZoYQvAYaSIJTYdxJSqNNRr1QG3Gta57A/exec"
 let allRecords = []
 
 function login() {
