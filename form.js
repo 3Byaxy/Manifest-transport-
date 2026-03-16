@@ -1,5 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUT3qtUWoeQZWfZMgZ90qcfLVsIqoXoRrU3bZoYQvAYaSIJTYdxJSqNNRr1QG3Gta57A/exec"
-
+const SCRIPT_URL = CONFIG.scriptUrl
 function submitForm() {
   const btn = document.getElementById("submitBtn")
   const name = document.getElementById("name").value.trim()
