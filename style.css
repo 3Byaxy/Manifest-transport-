@@ -136,3 +136,156 @@ button:disabled {
 .duplicate { background: #fff3cd; color: #856404; }
 .error { background: #f8d7da; color: #721c24; }
 .hidden { display: none; }
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  color: white;
+  padding: 16px 24px;
+}
+
+.admin-header h1 {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.admin-header span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.logout-btn {
+  width: auto;
+  padding: 8px 16px;
+  font-size: 13px;
+  background: transparent;
+  border: 1px solid #aaa;
+  color: white;
+  border-radius: 6px;
+  margin-top: 0;
+}
+
+.logout-btn:hover { background: rgba(255,255,255,0.1); }
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 20px 24px;
+  background: #f8f8f8;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e63946;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.toolbar button {
+  width: auto;
+  padding: 8px 16px;
+  font-size: 13px;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  padding: 0 24px 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+th {
+  background: #1a1a2e;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+tr:hover td { background: #fafafa; }
+
+.duplicate-row td {
+  background: #fff3cd;
+}
+
+.duplicate-row:hover td {
+  background: #ffe69c;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.badge-yes {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-no {
+  background: #f8d7da;
+  color: #721c24;
+}
+.nav-link {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #e63946;
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}

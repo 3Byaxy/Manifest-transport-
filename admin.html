@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifest Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="loginScreen" class="container">
+    <div class="header">
+      <h1>Manifest Fellowship</h1>
+      <p>Admin Dashboard</p>
+      <span>Stage: Infront of Girls Hostel — MKA/KIU01R</span>
+      <a href="index.html" class="nav-link">← Registration Form</a>
+    </div>
+    <div class="form-group">
+      <label>Admin Password</label>
+      <input type="password" id="passwordInput" placeholder="Enter password">
+    </div>
+    <button onclick="login()">Login</button>
+    <div id="loginError" class="msg error hidden">Wrong password. Try again.</div>
+  </div>
+
+  <div id="dashboardScreen" class="hidden">
+
+    <div class="admin-header">
+      <div>
+        <h1>Transport Dashboard</h1>
+        <span>Infront of Girls Hostel — MKA/KIU01R</span>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-number" id="totalCount">0</div>
+        <div class="stat-label">Total Registered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="firstTimerCount">0</div>
+        <div class="stat-label">First Timers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="returningCount">0</div>
+        <div class="stat-label">Returning</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="duplicateCount">0</div>
+        <div class="stat-label">Repeat Phones</div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" id="searchInput" placeholder="Search by name or phone..." oninput="renderTable()">
+      <select id="eventFilter" onchange="renderTable()">
+        <option value="">All Events</option>
+      </select>
+      <button onclick="exportCSV()">Export CSV</button>
+      <button onclick="loadData()">Refresh</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Residence</th>
+            <th>First Time</th>
+            <th>Course</th>
+            <th>Year</th>
+            <th>Event</th>
+            <th>Trip ID</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
